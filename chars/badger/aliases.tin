@@ -868,7 +868,7 @@
 #NOP -- reflexes;
 #nop necromancer reflexes;
 #alias {reflex_dream %1} {reflex add hp <80% dream %1;echo_reflex_dream %1};
-#alias {reflex_absorb %1} {reflex add gp1 <10000 qtrance unwrap 1/preserve remains/preserve get/absorb>%1;echo_reflex_absorb %1};
+#alias {reflex_absorb %1} {reflex add gp1 <10000 qtrance unwrap 1/preserve remains/get preservation/absorb>%1;echo_reflex_absorb %1};
 
 #alias {echo_reflex_dream %1} {#echo {****************  DREAM (FACTOR: %1)  ****************}};
 #alias {echo_reflex_absorb %1} {#echo {****************  ABSORB (# OF CORPSES: %1)  ****************}};
