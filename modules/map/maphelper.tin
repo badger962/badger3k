@@ -33,7 +33,7 @@
 		#loop 1 &speedruns_name[] tmpItem {
 			#if {"%1" == "$speedruns_name[$tmpItem]"} {
 				#var roomfound 1;
-                #showme {Found room %1 - here we go!};
+                #if {"$toggles[go_echo]" != "0"} {#showme {Found room %1 - here we go!}};
                 #map run $speedruns_vnum[$tmpItem];
 			};
 		};
