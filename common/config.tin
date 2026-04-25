@@ -42,11 +42,14 @@
     examine cooler;
     touch diamond rune;
     #send {(powers};
+    craftstats;
+    
     .update_gags;
     init_screen;
     draw_all;
     _mob_status_clear;
     reset_trackers;
+
     #if {"$eternal" == "1"} {_update_eternal_gxp init};
     #NOP -- Gag the few things this checks if it's not there for spam;
     #line oneshot #gag {^That is not here or it is uninteresting. (cooler?)};
@@ -55,6 +58,7 @@
     #line oneshot #gag {^There is no reason to '(powers' here.};
     #line oneshot #gag {^There is no reason to 'spellDmg-clear' here.};
     #line oneshot #gag {^There is no reason to 'summonDmg-clear' here.};
+
 
     #NOP -- Some files don't seem to read in changes always, read these in again just because;
     #read common/themes.tin;
