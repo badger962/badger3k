@@ -24,6 +24,11 @@
         #echo {<cdd>   Use the alias <fab>miner-off<cdd> to stop the mining bot};
         #echo {<cdd> ------------------------------------------------};
     } {.3};
+    #NOP -- If you don't have a miner level, grab it;
+    #if {"$craft_mining[data][skill_level]" == ""} {
+        #echo {<cdd> 3kdb: Player Miner level not found, attempting to find it...};
+        #send {craftstats};
+    };
 } {1};
 
 #NOP -- Detect miner level capture using the mud command craftstats;

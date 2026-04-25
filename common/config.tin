@@ -42,7 +42,6 @@
     examine cooler;
     touch diamond rune;
     #send {(powers};
-    craftstats;
     
     .update_gags;
     init_screen;
