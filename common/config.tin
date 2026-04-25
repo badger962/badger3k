@@ -47,6 +47,7 @@
     draw_all;
     _mob_status_clear;
     reset_trackers;
+    #if {"$eternal" == "1"} {_update_eternal_gxp init};
     #NOP -- Gag the few things this checks if it's not there for spam;
     #line oneshot #gag {^That is not here or it is uninteresting. (cooler?)};
     #line oneshot #gag {^You find nothing of interest.};
