@@ -1,5 +1,8 @@
 #class {minebot} {kill};
 #class {minebot} {open};
+
+_mining_get_training_deposits;
+
 #echo {<ffa>====================================================================<088>};
 #echo {<fff>  3kdb MinerBot  quick start<088>};
 #echo {};
@@ -13,6 +16,9 @@
 #echo {<ccd>  All jewel names by ore tier: <fff>minefor-list<088>};
 #echo {};
 #echo {<ccd>Stop bots<fff>  miner-off <ccd>then <fff>miner-on<ccd> to load again.<088>};
+#echo {};
+#echo {<ccd>Based on your current mining level of $craft_mining[data][skill_level]:};
+#echo {<ccd>  $mine_training_list};
 #echo {<ffa>====================================================================<088>};
 
 #alias {mine-list} {
@@ -39,6 +45,7 @@
 #var mine[voidstone] 0;
 #var mine[phasemetal] 0;
 #var mine[chaostone] 0;
+
 
 #alias {mine %0} {
 	#regex {%0} {copper} {#var mine[copper] 1};

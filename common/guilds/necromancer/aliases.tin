@@ -8,6 +8,8 @@
   #MATH {result} {%1};
 };
 
+#var _nukeUndead 1;
+
 #NOP -- Switch invoke damage types using comtrance;
 #alias {comt} {
     #switch {"%0"} {
@@ -143,6 +145,7 @@
 };
 
 #alias nukeUndeadAbs {
+    #var _nukeUndead 0;
     #var ogEnemy $enemy[name_numbers];
     #var undeadKilled 0;
     ktrig OFF;
@@ -157,10 +160,12 @@
         #${undeadKilled} qtrance preserve remains/absorb;
         #unaction {%* dealt the killing blow to Undead.};
         ktrig ON;
+        #var _nukeUndead 1;
     };
 };
 
 #alias nukeUndead_noUG_Abs {
+    #var _nukeUndead 0;
     #var ogEnemy $enemy[name_numbers];
     #var undeadKilled 0;
     ktrig OFF;
@@ -174,10 +179,14 @@
         #${undeadKilled} qtrance preserve remains/absorb;
         #unaction {%* dealt the killing blow to Undead.};
         ktrig ON;
+        #var _nukeUndead 1;
     };
 };
 
+#var _nukeUndead 1;
+
 #alias nukeUndeadPres {
+    #var _nukeUndead 0;
     #var ogEnemy $enemy[name_numbers];
     #var undeadKilled 0;
     ktrig OFF;
@@ -194,10 +203,12 @@
         keep all preservation;
         #unaction {%* dealt the killing blow to Undead.};
         ktrig ON;
+        #var _nukeUndead 1;
     };
 };
 
 #alias nukeUndead_noUG_Pres {
+    #var _nukeUndead 0;
     #var ogEnemy $enemy[name_numbers];
     #var undeadKilled 0;
     ktrig OFF;
@@ -213,6 +224,7 @@
         keep all preservation;
         #unaction {%* dealt the killing blow to Undead.};
         ktrig ON;
+        #var _nukeUndead 1;
     };
 };
 
