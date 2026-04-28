@@ -25,7 +25,7 @@
         #echo {<cdd> ------------------------------------------------};
     } {.3};
     #NOP -- If you don't have a miner level, grab it;
-    #if {"$craft_mining[data][skill_level]" == ""} {
+    #if {"${craft_mining[data][skill_level]}" == ""} {
         #echo {<cdd> 3kdb: Player Miner level not found, attempting to find it...};
         #send {craftstats};
     };
