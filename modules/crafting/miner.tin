@@ -130,7 +130,7 @@ _mining_get_training_deposits;
 
 	#alias {_step_room} {#undelay mineWorker;#delay minewalk {#path walk;spelunk} {1}};
 
-    #action {^You begin to mine the steel ore.$} {_working_mine} {1};
+    #action {^You begin to mine the %* ore.$} {_working_mine} {1};
     #action {^You begin working the ore vein.$} {_working_mine} {1};
     #action {^Carefully, you pick away at the ore.$} {_working_mine} {1};
     #action {^You are making progress, at the expense of sweat and effort.$} {_working_mine} {1};

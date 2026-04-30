@@ -5,8 +5,15 @@
 #alias jsonFormatEternal {
     #var apiPayload "character" : "$user";
     #foreach $eternalList[%*] index {
-        #if {"$index[cur_cd]" == "RDY"} {#var powerStatus "true"} {#var powerStatus "false"};
+        #if {"$index[cur_cd]" == "RDY"} {
+            #var powerStatus "true";
+            #var powerCooldown null;
+        } {
+            #var powerStatus "false";
+            #var powerCooldown $index[cur_cd];
+        };
         #cat apiPayload { , "$index[key]" : $powerStatus};
+        #cat apiPayload { , "cooldown_$index[key]" : $powerCooldown};
     };
 };
 
@@ -115,7 +122,8 @@
     jsonFormatEternal;
     #echo {Posting $user eternal powers to 3kdb in 3 seconds...};
     #delay 3 {
-        #script {python3 scripts/3kpiConnector.py $endpoint $apiPayload};
+        #script {apiPostEternalResult} {python3 scripts/3kpiConnector.py $endpoint $apiPayload 2>&1};
+        #echo {3kpi response: $apiPostEternalResult};
     };
 };
 
