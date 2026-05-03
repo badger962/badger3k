@@ -390,6 +390,50 @@
 } {2};
 
 
+#NOP -- Capture says;
+#var captureTells 1;
+
+#NOP -- Turn off capturing for sayhist;
+#alias sayhist {
+	#send {!sayhist};
+	#var captureTells 0;
+	#delay 2 {#var captureTells 1};
+};
+
+#action {~\e[0m\e[36;1mYou say:\e[0m %*%a\e[0m} {
+	#if $captureTells {
+		#if $toggles[chatlog_says] {
+			#format tmpText1 {%p} {%1};
+			#format tmpText2 {%p} {%2};
+			#var tmpText {$tmpText1 $tmpText2};
+			#replace tmpText {\n} { };
+			#var tmpText @sanitizePayload{$tmpText};		
+			update_chat <178>$user_cap says<088>:$tmpText;
+		};
+	};
+} {2};
+         
+#action {~\e[0m\e[36;1m%w says:\e[0m %*%a%*\e[0m} {
+	#if $captureTells {
+		#echo {matched pattern};
+		#if $toggles[chatlog_says] {
+			#var tmpItem 0;
+			#var tmpPlayer %1;
+			#list players find {%i$tmpPlayer} tmpItem;
+			#if {$tmpItem} {
+				#unvar tmpText;
+				#format tmpText1 {%p} {%1};
+				#format tmpText2 {%p} {%2};
+				#var tmpText {$tmpText1 $tmpText2};
+				#replace tmpText {\n} { };
+				#var tmpText @sanitizePayload{$tmpText};		
+				update_chat <178>$tmpPlayer says<088>:$tmpText;
+			};
+		};
+	};
+} {2};
+
+
 #alias {chatlog %1} {
 	#if {"%1" == "emotes"} {
 		#if {"$chat[log][emotes]" === ""} {
